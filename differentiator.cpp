@@ -13,6 +13,13 @@ const unsigned int SIZE_FIELD = 100;
 #define LastNode(ptr) if(!ptr) {return 0;}
 
 
+#define parseFunc(node, code)\
+node->var_type = code;\
+newNode(node->right);\
+newNode(node->left);\
+ParseExp(node->right, text);
+
+
 #define newNode(node) node = CreateNode();
 
 #define fillField(node, value, code)\
@@ -92,18 +99,12 @@ int ParseExp(Node* node, char* text)
         else if (!strcmp(temp_str, "x"))
             node->var_type = VarType::VAR;
         else if (!strcmp(temp_str, "sin")) {
-            node->var_type = VarType::SIN;
-            newNode(node->right);
-            newNode(node->left);
             i++;
-            ParseExp(node->right, text);
+            parseFunc(node, VarType::SIN);
         }
         else if (!strcmp(temp_str, "cos")) {
-            node->var_type = VarType::COS;
-            newNode(node->right);
-            newNode(node->left);
             i++;
-            ParseExp(node->right, text);
+            parseFunc(node, VarType::COS);
         }
 
         strncpy(node->field, temp_str, SIZE_FIELD);
