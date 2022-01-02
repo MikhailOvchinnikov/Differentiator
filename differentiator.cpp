@@ -1,7 +1,7 @@
-#include "differentiator.h"
 
 //Header file from the Stack project and it is at C:\Users\DELL\source\repos\Stack_dinamic\Stack_dinamic\stack.h
 #include "..\..\Stack_dinamic\Stack_dinamic\stack.h"
+#include "differentiator.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
